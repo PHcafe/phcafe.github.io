@@ -39,8 +39,8 @@
     });
   }
 
-  // Smooth Scroll for Anchor Links
-  $('.navbar-nav a, .smoothscroll').on('click', function(e) {
+  // Smooth Scroll for Anchor Links (only for .smoothscroll class)
+  $('.smoothscroll').on('click', function(e) {
     e.preventDefault();
     var target = $(this).attr('href');
     var offsetTop = $(target).offset().top - 80;

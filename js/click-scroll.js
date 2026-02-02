@@ -20,7 +20,8 @@ $.each(sectionArray, function(index, value){
          
      });
     
-    $('.click-scroll').eq(index).click(function(e){
+    // 使用更具体的选择器，确保正确绑定到导航链接
+    $('.nav-link.click-scroll').eq(index).click(function(e){
         var offsetClick = $('#' + 'section_' + value).offset().top - 83;
         e.preventDefault();
         $('html, body').animate({
