@@ -522,12 +522,33 @@ strong {
   color: var(--white-color);
 }
 
+.projects-section .pricing-thumb {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--dark-color);
+}
+
+.projects-section .pricing-thumb h3,
+.projects-section .pricing-thumb p,
+.projects-section .pricing-list-item {
+  color: var(--dark-color);
+}
+
 /*---------------------------------------
   ARTISTS              
 -----------------------------------------*/
 .artists-section {
   background-color: #2a2a2a;
   color: var(--white-color);
+}
+
+.artists-section .pricing-thumb {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--dark-color);
+}
+
+.artists-section .pricing-thumb h3,
+.artists-section .pricing-thumb p {
+  color: var(--dark-color);
 }
 
 .about-image {
@@ -755,7 +776,20 @@ strong {
   position: relative;
   padding: 50px;
   background-color: var(--white-color);
+  color: var(--dark-color);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-thumb h3 {
+  color: var(--dark-color);
+}
+
+.pricing-thumb p {
+  color: var(--p-color);
+}
+
+.pricing-list-item {
+  color: var(--dark-color);
 }
 
 .pricing-thumb h3 small {
