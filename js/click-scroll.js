@@ -1,38 +1,45 @@
 //jquery-click-scroll
 //by syamsul'isul' Arifin
 
-var sectionArray = [1, 2, 3, 4, 5, 6];
-
-$.each(sectionArray, function(index, value){
-          
-     $(document).scroll(function(){
-         var offsetSection = $('#' + 'section_' + value).offset().top - 83;
-         var docScroll = $(document).scrollTop();
-         var docScroll1 = docScroll + 1;
-         
-        
-         if ( docScroll1 >= offsetSection ){
-             $('.navbar-nav .nav-item .nav-link').removeClass('active');
-             $('.navbar-nav .nav-item .nav-link:link').addClass('inactive');  
-             $('.navbar-nav .nav-item .nav-link').eq(index).addClass('active');
-             $('.navbar-nav .nav-item .nav-link').eq(index).removeClass('inactive');
-         }
-         
-     });
-    
-    // 使用更具体的选择器，确保正确绑定到导航链接
-    $('.nav-link.click-scroll').eq(index).click(function(e){
-        var offsetClick = $('#' + 'section_' + value).offset().top - 83;
-        e.preventDefault();
-        $('html, body').animate({
-            'scrollTop':offsetClick
-        }, 300)
-    });
-    
-});
-
 $(document).ready(function(){
+    // 初始化导航链接状态
     $('.navbar-nav .nav-item .nav-link:link').addClass('inactive');    
     $('.navbar-nav .nav-item .nav-link').eq(0).addClass('active');
     $('.navbar-nav .nav-item .nav-link:link').eq(0).removeClass('inactive');
+    
+    // 单一的滚动事件监听器
+    $(document).scroll(function(){
+        var scrollPosition = $(document).scrollTop() + 83;
+        
+        // 检查每个部分的位置
+        $('.nav-link.click-scroll').each(function(){
+            var targetId = $(this).attr('href');
+            var targetSection = $(targetId);
+            
+            if (targetSection.length) {
+                var sectionTop = targetSection.offset().top;
+                var sectionBottom = sectionTop + targetSection.outerHeight();
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    $('.navbar-nav .nav-item .nav-link').removeClass('active').addClass('inactive');
+                    $(this).addClass('active').removeClass('inactive');
+                }
+            }
+        });
+    });
+    
+    // 绑定点击事件到所有导航链接
+    $('.nav-link.click-scroll').click(function(e){
+        e.preventDefault();
+        var targetId = $(this).attr('href');
+        var targetSection = $(targetId);
+        
+        if (targetSection.length) {
+            var offsetTop = targetSection.offset().top - 83;
+            
+            $('html, body').animate({
+                'scrollTop': offsetTop
+            }, 500);
+        }
+    });
 });
