@@ -240,6 +240,7 @@ strong {
   background-color: var(--white-color);
   border-radius: var(--border-radius-medium);
   padding: 45px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .nav-tabs {
@@ -513,6 +514,22 @@ strong {
   position: relative;
 }
 
+/*---------------------------------------
+  PROJECTS              
+-----------------------------------------*/
+.projects-section {
+  background-color: #1a1a1a;
+  color: var(--white-color);
+}
+
+/*---------------------------------------
+  ARTISTS              
+-----------------------------------------*/
+.artists-section {
+  background-color: #2a2a2a;
+  color: var(--white-color);
+}
+
 .about-image {
   border-radius: var(--border-radius-medium);
   display: block;
@@ -544,6 +561,14 @@ strong {
   left: 0;
   margin: 20px;
   padding: 35px;
+}
+
+.services-info {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 40px;
+  border-radius: var(--border-radius-medium);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 
@@ -729,6 +754,8 @@ strong {
   border-radius: var(--border-radius-medium);
   position: relative;
   padding: 50px;
+  background-color: var(--white-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .pricing-thumb h3 small {
