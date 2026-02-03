@@ -482,32 +482,26 @@ function initLanguageSwitcher() {
     // Set initial language
     changeLanguage(savedLang);
     
-    // Add click event listeners to language buttons
-    const langEn = document.querySelector('#lang-en');
-    const langZh = document.querySelector('#lang-zh');
+    // Update language toggle button text
+    updateLanguageButton(savedLang);
     
-    if (langEn) {
-        langEn.addEventListener('click', function(e) {
-            e.preventDefault();
-            changeLanguage('en');
-            // Close dropdown after selection
-            const dropdownMenu = langEn.closest('.dropdown-menu');
-            if (dropdownMenu) {
-                dropdownMenu.classList.remove('show');
-            }
+    // Add click event listener to language toggle button
+    const languageToggle = document.querySelector('#language-toggle');
+    if (languageToggle) {
+        languageToggle.addEventListener('click', function() {
+            const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+            const newLang = currentLang === 'en' ? 'zh' : 'en';
+            changeLanguage(newLang);
+            updateLanguageButton(newLang);
         });
     }
-    
-    if (langZh) {
-        langZh.addEventListener('click', function(e) {
-            e.preventDefault();
-            changeLanguage('zh');
-            // Close dropdown after selection
-            const dropdownMenu = langZh.closest('.dropdown-menu');
-            if (dropdownMenu) {
-                dropdownMenu.classList.remove('show');
-            }
-        });
+}
+
+// Update language toggle button text
+function updateLanguageButton(lang) {
+    const languageToggle = document.querySelector('#language-toggle');
+    if (languageToggle) {
+        languageToggle.textContent = lang === 'en' ? 'English' : '中文';
     }
 }
 
