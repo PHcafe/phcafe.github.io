@@ -217,6 +217,22 @@ function changeLanguage(lang) {
         if (navLinks[5]) navLinks[5].textContent = translations[lang].contact;
     }
     
+    // Update support.html specific elements
+    const supportHeroH1 = document.querySelector('.hero-section h1');
+    if (supportHeroH1 && supportHeroH1.textContent === 'Support PunkHeart') {
+        supportHeroH1.textContent = translations[lang].supportTitle;
+    }
+    
+    const supportHeroSmall = document.querySelector('.hero-section small');
+    if (supportHeroSmall && supportHeroSmall.textContent === 'Support Our Development') {
+        supportHeroSmall.textContent = translations[lang].supportSubtitle;
+    }
+    
+    const supportHeroButton = document.querySelector('.hero-section .custom-btn');
+    if (supportHeroButton && supportHeroButton.textContent === 'Learn More') {
+        supportHeroButton.textContent = translations[lang].heroButton;
+    }
+    
     // Update contact button
     const contactBtn = document.querySelector('.btn.custom-btn.d-lg-none');
     if (contactBtn) {
@@ -482,6 +498,21 @@ function initLanguageSwitcher() {
             e.preventDefault();
             changeLanguage('zh');
         });
+    }
+    
+    // Fix dropdown toggle for language menu
+    const langDropdown = document.querySelector('.nav-item.dropdown');
+    if (langDropdown) {
+        const dropdownToggle = langDropdown.querySelector('.nav-link.dropdown-toggle');
+        if (dropdownToggle) {
+            dropdownToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const dropdownMenu = langDropdown.querySelector('.dropdown-menu');
+                if (dropdownMenu) {
+                    dropdownMenu.classList.toggle('show');
+                }
+            });
+        }
     }
 }
 
