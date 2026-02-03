@@ -201,135 +201,258 @@ const translations = {
 // Function to change language
 function changeLanguage(lang) {
     // Update HTML elements with translations
-    document.querySelector('.site-header p strong').textContent = translations[lang].welcome;
+    const headerWelcome = document.querySelector('.site-header p strong');
+    if (headerWelcome) {
+        headerWelcome.textContent = translations[lang].welcome;
+    }
     
     // Update navigation links
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-    navLinks[0].textContent = translations[lang].home;
-    navLinks[1].textContent = translations[lang].about;
-    navLinks[2].textContent = translations[lang].projects;
-    navLinks[3].textContent = translations[lang].team;
-    navLinks[4].textContent = translations[lang].support;
-    navLinks[5].textContent = translations[lang].contact;
+    if (navLinks.length > 0) {
+        if (navLinks[0]) navLinks[0].textContent = translations[lang].home;
+        if (navLinks[1]) navLinks[1].textContent = translations[lang].about;
+        if (navLinks[2]) navLinks[2].textContent = translations[lang].projects;
+        if (navLinks[3]) navLinks[3].textContent = translations[lang].team;
+        if (navLinks[4]) navLinks[4].textContent = translations[lang].support;
+        if (navLinks[5]) navLinks[5].textContent = translations[lang].contact;
+    }
     
     // Update contact button
-    document.querySelector('.btn.custom-btn.d-lg-none').textContent = translations[lang].contactUs;
+    const contactBtn = document.querySelector('.btn.custom-btn.d-lg-none');
+    if (contactBtn) {
+        contactBtn.textContent = translations[lang].contactUs;
+    }
     
     // Update hero section
-    document.querySelector('.hero-section small').textContent = translations[lang].heroSubtitle;
-    document.querySelector('.hero-section h1').textContent = translations[lang].heroTitle;
-    document.querySelector('.hero-section .custom-btn').textContent = translations[lang].heroButton;
-    document.querySelector('.date-wrap h5').innerHTML = '<i class="custom-icon bi-clock me-2"></i>' + translations[lang].startedDate;
+    const heroSmall = document.querySelector('.hero-section small');
+    if (heroSmall) heroSmall.textContent = translations[lang].heroSubtitle;
+    
+    const heroH1 = document.querySelector('.hero-section h1');
+    if (heroH1) heroH1.textContent = translations[lang].heroTitle;
+    
+    const heroBtn = document.querySelector('.hero-section .custom-btn');
+    if (heroBtn) heroBtn.textContent = translations[lang].heroButton;
+    
+    const dateWrap = document.querySelector('.date-wrap h5');
+    if (dateWrap) {
+        dateWrap.innerHTML = '<i class="custom-icon bi-clock me-2"></i>' + translations[lang].startedDate;
+    }
     
     // Update about section
-    document.querySelector('#section_2 h2').textContent = translations[lang].aboutTitle;
+    const aboutH2 = document.querySelector('#section_2 h2');
+    if (aboutH2) aboutH2.textContent = translations[lang].aboutTitle;
+    
     const aboutTexts = document.querySelectorAll('#section_2 p');
-    aboutTexts[0].textContent = translations[lang].aboutText1;
-    aboutTexts[1].textContent = translations[lang].aboutText3;
-    aboutTexts[2].textContent = translations[lang].aboutText5;
+    if (aboutTexts.length > 0) {
+        if (aboutTexts[0]) aboutTexts[0].textContent = translations[lang].aboutText1;
+        if (aboutTexts[1]) aboutTexts[1].textContent = translations[lang].aboutText3;
+        if (aboutTexts[2]) aboutTexts[2].textContent = translations[lang].aboutText5;
+    }
+    
     const aboutHeadings = document.querySelectorAll('#section_2 h6');
-    aboutHeadings[0].textContent = translations[lang].aboutText2;
-    aboutHeadings[1].textContent = translations[lang].aboutText4;
+    if (aboutHeadings.length > 0) {
+        if (aboutHeadings[0]) aboutHeadings[0].textContent = translations[lang].aboutText2;
+        if (aboutHeadings[1]) aboutHeadings[1].textContent = translations[lang].aboutText4;
+    }
     
     // Update projects section
-    document.querySelector('#section_3 h2').textContent = translations[lang].projectsTitle;
-    document.querySelector('#section_3 p').textContent = translations[lang].projectsSubtitle;
+    const projectsH2 = document.querySelector('#section_3 h2');
+    if (projectsH2) projectsH2.textContent = translations[lang].projectsTitle;
+    
+    const projectsP = document.querySelector('#section_3 p');
+    if (projectsP) projectsP.textContent = translations[lang].projectsSubtitle;
+    
     const projectCards = document.querySelectorAll('#section_3 .pricing-thumb');
-    projectCards[0].querySelector('h3').textContent = translations[lang].project1Title;
-    projectCards[0].querySelector('p').textContent = translations[lang].project1Text;
-    const project1Features = projectCards[0].querySelectorAll('.pricing-list-item');
-    project1Features[0].textContent = translations[lang].project1Feature1;
-    project1Features[1].textContent = translations[lang].project1Feature2;
-    project1Features[2].textContent = translations[lang].project1Feature3;
-    
-    projectCards[1].querySelector('h3').textContent = translations[lang].project2Title;
-    projectCards[1].querySelector('p').textContent = translations[lang].project2Text;
-    const project2Features = projectCards[1].querySelectorAll('.pricing-list-item');
-    project2Features[0].textContent = translations[lang].project2Feature1;
-    project2Features[1].textContent = translations[lang].project2Feature2;
-    project2Features[2].textContent = translations[lang].project2Feature3;
-    
-    projectCards[2].querySelector('h3').textContent = translations[lang].project3Title;
-    projectCards[2].querySelector('p').textContent = translations[lang].project3Text;
-    const project3Features = projectCards[2].querySelectorAll('.pricing-list-item');
-    project3Features[0].textContent = translations[lang].project3Feature1;
-    project3Features[1].textContent = translations[lang].project3Feature2;
-    project3Features[2].textContent = translations[lang].project3Feature3;
+    if (projectCards.length > 0) {
+        if (projectCards[0]) {
+            const h3 = projectCards[0].querySelector('h3');
+            if (h3) h3.textContent = translations[lang].project1Title;
+            const p = projectCards[0].querySelector('p');
+            if (p) p.textContent = translations[lang].project1Text;
+            const features = projectCards[0].querySelectorAll('.pricing-list-item');
+            if (features.length > 0) {
+                if (features[0]) features[0].textContent = translations[lang].project1Feature1;
+                if (features[1]) features[1].textContent = translations[lang].project1Feature2;
+                if (features[2]) features[2].textContent = translations[lang].project1Feature3;
+            }
+        }
+        
+        if (projectCards[1]) {
+            const h3 = projectCards[1].querySelector('h3');
+            if (h3) h3.textContent = translations[lang].project2Title;
+            const p = projectCards[1].querySelector('p');
+            if (p) p.textContent = translations[lang].project2Text;
+            const features = projectCards[1].querySelectorAll('.pricing-list-item');
+            if (features.length > 0) {
+                if (features[0]) features[0].textContent = translations[lang].project2Feature1;
+                if (features[1]) features[1].textContent = translations[lang].project2Feature2;
+                if (features[2]) features[2].textContent = translations[lang].project2Feature3;
+            }
+        }
+        
+        if (projectCards[2]) {
+            const h3 = projectCards[2].querySelector('h3');
+            if (h3) h3.textContent = translations[lang].project3Title;
+            const p = projectCards[2].querySelector('p');
+            if (p) p.textContent = translations[lang].project3Text;
+            const features = projectCards[2].querySelectorAll('.pricing-list-item');
+            if (features.length > 0) {
+                if (features[0]) features[0].textContent = translations[lang].project3Feature1;
+                if (features[1]) features[1].textContent = translations[lang].project3Feature2;
+                if (features[2]) features[2].textContent = translations[lang].project3Feature3;
+            }
+        }
+    }
     
     // Update team section
-    document.querySelector('#section_4 h2').textContent = translations[lang].teamTitle;
-    document.querySelector('#section_4 p').textContent = translations[lang].teamSubtitle;
+    const teamH2 = document.querySelector('#section_4 h2');
+    if (teamH2) teamH2.textContent = translations[lang].teamTitle;
+    
+    const teamP = document.querySelector('#section_4 p');
+    if (teamP) teamP.textContent = translations[lang].teamSubtitle;
+    
     const teamMembers = document.querySelectorAll('#section_4 .pricing-thumb');
-    teamMembers[0].querySelector('h3').textContent = translations[lang].teamMember1Name;
-    teamMembers[0].querySelectorAll('p')[0].textContent = translations[lang].teamMember1Role;
-    teamMembers[0].querySelectorAll('p')[1].textContent = translations[lang].teamMember1Desc;
-    
-    teamMembers[1].querySelector('h3').textContent = translations[lang].teamMember2Name;
-    teamMembers[1].querySelectorAll('p')[0].textContent = translations[lang].teamMember2Role;
-    teamMembers[1].querySelectorAll('p')[1].textContent = translations[lang].teamMember2Desc;
-    
-    teamMembers[2].querySelector('h3').textContent = translations[lang].teamMember3Name;
-    teamMembers[2].querySelectorAll('p')[0].textContent = translations[lang].teamMember3Role;
-    teamMembers[2].querySelectorAll('p')[1].textContent = translations[lang].teamMember3Desc;
-    
-    teamMembers[3].querySelector('h3').textContent = translations[lang].teamMember4Name;
-    teamMembers[3].querySelectorAll('p')[0].textContent = translations[lang].teamMember4Role;
-    teamMembers[3].querySelectorAll('p')[1].textContent = translations[lang].teamMember4Desc;
+    if (teamMembers.length > 0) {
+        if (teamMembers[0]) {
+            const h3 = teamMembers[0].querySelector('h3');
+            if (h3) h3.textContent = translations[lang].teamMember1Name;
+            const ps = teamMembers[0].querySelectorAll('p');
+            if (ps[0]) ps[0].textContent = translations[lang].teamMember1Role;
+            if (ps[1]) ps[1].textContent = translations[lang].teamMember1Desc;
+        }
+        
+        if (teamMembers[1]) {
+            const h3 = teamMembers[1].querySelector('h3');
+            if (h3) h3.textContent = translations[lang].teamMember2Name;
+            const ps = teamMembers[1].querySelectorAll('p');
+            if (ps[0]) ps[0].textContent = translations[lang].teamMember2Role;
+            if (ps[1]) ps[1].textContent = translations[lang].teamMember2Desc;
+        }
+        
+        if (teamMembers[2]) {
+            const h3 = teamMembers[2].querySelector('h3');
+            if (h3) h3.textContent = translations[lang].teamMember3Name;
+            const ps = teamMembers[2].querySelectorAll('p');
+            if (ps[0]) ps[0].textContent = translations[lang].teamMember3Role;
+            if (ps[1]) ps[1].textContent = translations[lang].teamMember3Desc;
+        }
+        
+        if (teamMembers[3]) {
+            const h3 = teamMembers[3].querySelector('h3');
+            if (h3) h3.textContent = translations[lang].teamMember4Name;
+            const ps = teamMembers[3].querySelectorAll('p');
+            if (ps[0]) ps[0].textContent = translations[lang].teamMember4Role;
+            if (ps[1]) ps[1].textContent = translations[lang].teamMember4Desc;
+        }
+    }
     
     // Update support section
-    document.querySelector('#section_5 h2').textContent = translations[lang].supportTitle;
-    document.querySelector('#section_5 p').textContent = translations[lang].supportSubtitle;
+    const supportH2 = document.querySelector('#section_5 h2');
+    if (supportH2) supportH2.textContent = translations[lang].supportTitle;
+    
+    const supportP = document.querySelector('#section_5 p');
+    if (supportP) supportP.textContent = translations[lang].supportSubtitle;
+    
     const supportOptions = document.querySelectorAll('#section_5 .pricing-thumb');
-    supportOptions[0].querySelector('h3').innerHTML = '<small>Support Plugin Development</small><br/>Any Amount';
-    supportOptions[0].querySelectorAll('p')[0].textContent = translations[lang].supportOption1Text;
-    const support1Features = supportOptions[0].querySelectorAll('.pricing-list-item');
-    support1Features[0].textContent = translations[lang].supportOption1Feature1;
-    support1Features[1].textContent = translations[lang].supportOption1Feature2;
-    support1Features[2].textContent = translations[lang].supportOption1Feature3;
-    support1Features[3].textContent = translations[lang].supportOption1Feature4;
-    supportOptions[0].querySelector('.link-fx-1 span').textContent = translations[lang].supportOption1Button;
-    
-    supportOptions[1].querySelector('h3').innerHTML = '<small>Support Server Development</small><br/>Any Amount';
-    supportOptions[1].querySelectorAll('p')[0].textContent = translations[lang].supportOption2Text;
-    const support2Features = supportOptions[1].querySelectorAll('.pricing-list-item');
-    support2Features[0].textContent = translations[lang].supportOption2Feature1;
-    support2Features[1].textContent = translations[lang].supportOption2Feature2;
-    support2Features[2].textContent = translations[lang].supportOption2Feature3;
-    support2Features[3].textContent = translations[lang].supportOption2Feature4;
-    supportOptions[1].querySelector('.link-fx-1 span').textContent = translations[lang].supportOption2Button;
-    
-    supportOptions[2].querySelector('h3').textContent = translations[lang].supportWhyTitle;
-    supportOptions[2].querySelectorAll('p')[0].textContent = translations[lang].supportWhyText1;
-    supportOptions[2].querySelectorAll('p')[1].textContent = translations[lang].supportWhyText2;
-    const supportWhyFeatures = supportOptions[2].querySelectorAll('.pricing-list-item');
-    supportWhyFeatures[0].textContent = translations[lang].supportWhyFeature1;
-    supportWhyFeatures[1].textContent = translations[lang].supportWhyFeature2;
-    supportWhyFeatures[2].textContent = translations[lang].supportWhyFeature3;
-    supportWhyFeatures[3].textContent = translations[lang].supportWhyFeature4;
+    if (supportOptions.length > 0) {
+        if (supportOptions[0]) {
+            const h3 = supportOptions[0].querySelector('h3');
+            if (h3) h3.innerHTML = '<small>Support Plugin Development</small><br/>Any Amount';
+            const ps = supportOptions[0].querySelectorAll('p');
+            if (ps[0]) ps[0].textContent = translations[lang].supportOption1Text;
+            const features = supportOptions[0].querySelectorAll('.pricing-list-item');
+            if (features.length > 0) {
+                if (features[0]) features[0].textContent = translations[lang].supportOption1Feature1;
+                if (features[1]) features[1].textContent = translations[lang].supportOption1Feature2;
+                if (features[2]) features[2].textContent = translations[lang].supportOption1Feature3;
+                if (features[3]) features[3].textContent = translations[lang].supportOption1Feature4;
+            }
+            const linkFx = supportOptions[0].querySelector('.link-fx-1 span');
+            if (linkFx) linkFx.textContent = translations[lang].supportOption1Button;
+        }
+        
+        if (supportOptions[1]) {
+            const h3 = supportOptions[1].querySelector('h3');
+            if (h3) h3.innerHTML = '<small>Support Server Development</small><br/>Any Amount';
+            const ps = supportOptions[1].querySelectorAll('p');
+            if (ps[0]) ps[0].textContent = translations[lang].supportOption2Text;
+            const features = supportOptions[1].querySelectorAll('.pricing-list-item');
+            if (features.length > 0) {
+                if (features[0]) features[0].textContent = translations[lang].supportOption2Feature1;
+                if (features[1]) features[1].textContent = translations[lang].supportOption2Feature2;
+                if (features[2]) features[2].textContent = translations[lang].supportOption2Feature3;
+                if (features[3]) features[3].textContent = translations[lang].supportOption2Feature4;
+            }
+            const linkFx = supportOptions[1].querySelector('.link-fx-1 span');
+            if (linkFx) linkFx.textContent = translations[lang].supportOption2Button;
+        }
+        
+        if (supportOptions[2]) {
+            const h3 = supportOptions[2].querySelector('h3');
+            if (h3) h3.textContent = translations[lang].supportWhyTitle;
+            const ps = supportOptions[2].querySelectorAll('p');
+            if (ps[0]) ps[0].textContent = translations[lang].supportWhyText1;
+            if (ps[1]) ps[1].textContent = translations[lang].supportWhyText2;
+            const features = supportOptions[2].querySelectorAll('.pricing-list-item');
+            if (features.length > 0) {
+                if (features[0]) features[0].textContent = translations[lang].supportWhyFeature1;
+                if (features[1]) features[1].textContent = translations[lang].supportWhyFeature2;
+                if (features[2]) features[2].textContent = translations[lang].supportWhyFeature3;
+                if (features[3]) features[3].textContent = translations[lang].supportWhyFeature4;
+            }
+        }
+    }
     
     // Update contact section
-    document.querySelector('#section_6 h2').textContent = translations[lang].contactTitle;
-    document.querySelector('#nav-ContactForm-tab h5').textContent = translations[lang].contactFormTab;
-    document.querySelector('#nav-ContactMap-tab h5').textContent = translations[lang].contactMapTab;
-    document.querySelector('#contact-name').placeholder = translations[lang].contactFormName;
-    document.querySelector('#contact-email').placeholder = translations[lang].contactFormEmail;
-    document.querySelector('#contact-company').placeholder = translations[lang].contactFormCompany;
-    document.querySelector('#contact-message').placeholder = translations[lang].contactFormMessage;
-    document.querySelector('.form-control.btn-pulse').textContent = translations[lang].contactFormButton;
+    const contactH2 = document.querySelector('#section_6 h2');
+    if (contactH2) contactH2.textContent = translations[lang].contactTitle;
+    
+    const contactFormTab = document.querySelector('#nav-ContactForm-tab h5');
+    if (contactFormTab) contactFormTab.textContent = translations[lang].contactFormTab;
+    
+    const contactMapTab = document.querySelector('#nav-ContactMap-tab h5');
+    if (contactMapTab) contactMapTab.textContent = translations[lang].contactMapTab;
+    
+    const contactName = document.querySelector('#contact-name');
+    if (contactName) contactName.placeholder = translations[lang].contactFormName;
+    
+    const contactEmail = document.querySelector('#contact-email');
+    if (contactEmail) contactEmail.placeholder = translations[lang].contactFormEmail;
+    
+    const contactCompany = document.querySelector('#contact-company');
+    if (contactCompany) contactCompany.placeholder = translations[lang].contactFormCompany;
+    
+    const contactMessage = document.querySelector('#contact-message');
+    if (contactMessage) contactMessage.placeholder = translations[lang].contactFormMessage;
+    
+    const contactButton = document.querySelector('.form-control.btn-pulse');
+    if (contactButton) contactButton.textContent = translations[lang].contactFormButton;
     
     // Update footer
-    document.querySelector('.site-footer-top h2').textContent = translations[lang].footerTitle;
-    document.querySelector('.site-footer-title').textContent = translations[lang].footerLinks;
+    const footerH2 = document.querySelector('.site-footer-top h2');
+    if (footerH2) footerH2.textContent = translations[lang].footerTitle;
+    
+    const footerTitle = document.querySelector('.site-footer-title');
+    if (footerTitle) footerTitle.textContent = translations[lang].footerLinks;
+    
     const footerLinks = document.querySelectorAll('.site-footer-link');
-    footerLinks[0].textContent = translations[lang].home;
-    footerLinks[1].textContent = translations[lang].about;
-    footerLinks[2].textContent = translations[lang].projects;
-    footerLinks[3].textContent = translations[lang].team;
-    footerLinks[4].textContent = translations[lang].support;
-    footerLinks[5].textContent = translations[lang].contact;
-    document.querySelector('.site-footer-title:nth-of-type(2)').textContent = translations[lang].footerQuestion;
-    document.querySelector('.site-footer p:nth-of-type(2)').textContent = translations[lang].footerAdvertise;
-    document.querySelector('.copyright-text').textContent = translations[lang].footerCopyright;
+    if (footerLinks.length > 0) {
+        if (footerLinks[0]) footerLinks[0].textContent = translations[lang].home;
+        if (footerLinks[1]) footerLinks[1].textContent = translations[lang].about;
+        if (footerLinks[2]) footerLinks[2].textContent = translations[lang].projects;
+        if (footerLinks[3]) footerLinks[3].textContent = translations[lang].team;
+        if (footerLinks[4]) footerLinks[4].textContent = translations[lang].support;
+        if (footerLinks[5]) footerLinks[5].textContent = translations[lang].contact;
+    }
+    
+    const footerQuestion = document.querySelector('.site-footer-title:nth-of-type(2)');
+    if (footerQuestion) footerQuestion.textContent = translations[lang].footerQuestion;
+    
+    const footerAdvertise = document.querySelector('.site-footer p:nth-of-type(2)');
+    if (footerAdvertise) footerAdvertise.textContent = translations[lang].footerAdvertise;
+    
+    const copyrightText = document.querySelector('.copyright-text');
+    if (copyrightText) copyrightText.textContent = translations[lang].footerCopyright;
     
     // Save current language preference
     localStorage.setItem('preferredLanguage', lang);
@@ -344,13 +467,22 @@ function initLanguageSwitcher() {
     changeLanguage(savedLang);
     
     // Add click event listeners to language buttons
-    document.querySelector('#lang-en').addEventListener('click', function() {
-        changeLanguage('en');
-    });
+    const langEn = document.querySelector('#lang-en');
+    const langZh = document.querySelector('#lang-zh');
     
-    document.querySelector('#lang-zh').addEventListener('click', function() {
-        changeLanguage('zh');
-    });
+    if (langEn) {
+        langEn.addEventListener('click', function(e) {
+            e.preventDefault();
+            changeLanguage('en');
+        });
+    }
+    
+    if (langZh) {
+        langZh.addEventListener('click', function(e) {
+            e.preventDefault();
+            changeLanguage('zh');
+        });
+    }
 }
 
 // Initialize when DOM is loaded
