@@ -490,6 +490,11 @@ function initLanguageSwitcher() {
         langEn.addEventListener('click', function(e) {
             e.preventDefault();
             changeLanguage('en');
+            // Close dropdown after selection
+            const dropdownMenu = langEn.closest('.dropdown-menu');
+            if (dropdownMenu) {
+                dropdownMenu.classList.remove('show');
+            }
         });
     }
     
@@ -497,22 +502,12 @@ function initLanguageSwitcher() {
         langZh.addEventListener('click', function(e) {
             e.preventDefault();
             changeLanguage('zh');
+            // Close dropdown after selection
+            const dropdownMenu = langZh.closest('.dropdown-menu');
+            if (dropdownMenu) {
+                dropdownMenu.classList.remove('show');
+            }
         });
-    }
-    
-    // Fix dropdown toggle for language menu
-    const langDropdown = document.querySelector('.nav-item.dropdown');
-    if (langDropdown) {
-        const dropdownToggle = langDropdown.querySelector('.nav-link.dropdown-toggle');
-        if (dropdownToggle) {
-            dropdownToggle.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const dropdownMenu = langDropdown.querySelector('.dropdown-menu');
-                if (dropdownMenu) {
-                    dropdownMenu.classList.toggle('show');
-                }
-            });
-        }
     }
 }
 
